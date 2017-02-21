@@ -85,7 +85,7 @@ class Admin extends CI_Controller
         $key['register_date'],
         '<a class="btn btn-sm btn-primary" title="Edit" onclick="edit_member('."'".$key['user_id']."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
         <a class="btn btn-sm btn-danger" title="Delete" onclick="delete_member('."'".$key['user_id']."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>',
-      ))
+      ));
     }
   }
 
