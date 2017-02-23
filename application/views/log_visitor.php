@@ -1,6 +1,6 @@
 <div class="page-title">
   <div class="title_left">
-    <h3>MEMBER MANAGER</h3>
+    <h3>LOG VISITOR</h3>
   </div>
 
   <!-- <div class="title_right">
@@ -20,7 +20,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>TABLE OF ALL MEMBER</h2>
+      <h2>TABLE OF ALL VISITOR</h2>
       <ul class="nav navbar-right panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
         </li>
@@ -40,26 +40,19 @@
     </div>
 <div class="x_content">
   <p class="text-muted font-13 m-b-30">
-  This is table of all member, please dont change anythink without aggrement with the member !!!!
+  This is table of all visitor
   </p>
 <a href="javascript:void(0)" onclick="reload_table()"class="btn btn-raised btn-primary">Reload Table</a>
-  <table id="member" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+  <table id="log-visitor" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th>No</th>
         <th>User ID</th>
         <th>RFID</th>
         <th>User Name</th>
-        <th>Email</th>
-        <th>Password (SH256)</th>
         <th>Full Name </th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Group</th>
-        <th>Gender</th>
-        <th>Birthday</th>
-        <th>Register Date</th>
-        <th>Action</th>
+        <th>Time Come</th>
+        <!-- <th>Action</th> -->
       </tr>
     </thead>
     <tbody>
@@ -227,12 +220,12 @@
 <!-- /modal for edit some data -->
 
 <script>
-var url="<?php echo site_url("admin/get_data_member_all/")?>";  //url to get data new book from databases on table master book where status is 0 (new input)
+var url="<?php echo site_url("admin/get_data_visitor/")?>";  //url to get data new book from databases on table master book where status is 0 (new input)
 var table_member;
 var user_id_global=0;
 //plot data to table using ajax
 $(document).ready(function() {
-table_member=$('#member').DataTable( {
+table_member=$('#log-visitor').DataTable( {
     "ajax":
     {
         "url": url,

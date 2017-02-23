@@ -62,13 +62,49 @@ class Admin_model extends CI_Model
     $this->db->where('id_book',$id);
     $this->db->delete('book_master');
   }
+
   //get all data user/member
   public function get_all_member()
   {
     $this->db->select('*');
-    $this->db->from('user_member');
+    $this->db->from('user_master');
     $query=$this->db->get();
     return $query->result_array();
   } //eof
+
+  //get all data visitor
+  public function get_all_data_visitor()
+  {
+    $this->db->select('um.user_id, um.id_rfid, um.username, um.first_name, um.last_name, lv.log_time');
+    $this->db->from('user_master um');
+    $this->db->join('log_visitor lv', 'um.id_rfid = lv.rfid');
+    $query=$this->db->get();
+    return $query->result_array();
+  }// eof
+
+  // get data member by id
+  public function get_member_by_id($id)
+  {
+    $this->db->select('*');
+    $this->db->from('user_master');
+    $this->db->where('user_id',$id);
+    $query=$this->db->get();
+    return $query->row();
+  }//eof
+
+  //update member by id
+  public function save_update_member($where, $data)
+  {
+    $this->db->update('user_master',$data, $where);
+    return $this->db->affected_rows();
+  } //eof
+
+  //delete member by id
+  public function delete_member_by_id($id)
+  {
+    $this->db->where('user_id',$id);
+    $this->db->delete('user_master');
+  } //eof
+
 
 } //the end of the class

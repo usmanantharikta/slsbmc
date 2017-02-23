@@ -3,7 +3,7 @@
     <h3>BOOK MANAGER</h3>
   </div>
 
-  <div class="title_right">
+  <!-- <div class="title_right">
     <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for...">
@@ -12,7 +12,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <div class="clearfix"></div>
@@ -82,8 +82,8 @@
         <!-- form -->
         <form id="form" class="form-horizontal form-label-left" novalidate>
 
-          <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
-          </p>
+          <!-- <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+          </p> -->
           <span class="section">Data of New Book</span>
 
           <div class="item form-group">
@@ -239,6 +239,7 @@ table=$('#new_book').DataTable( {
         "url": url,
         "type": "POST",
         "retrieve": true,
+        keys: true,
     },
   });
 });
