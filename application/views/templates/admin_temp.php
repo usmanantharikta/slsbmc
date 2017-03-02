@@ -28,12 +28,16 @@
     <link href="<?php echo base_url("assets/datatables.net-scroller-bs/css/scroller.bootstrap.min.css")?>" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url("assets/build/css/custom.min.css")?>" rel="stylesheet">
+
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap Material Design -->
     <link href="<?php echo base_url("assets/bootstrap-material/css/bootstrap-material-design.css")?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/bootstrap-material/css/ripples.min.css")?>" rel="stylesheet">
+
+    <!-- costom by developed -->
+    <link href="<?php echo base_url("assets/custom-css/custom-dev.css")?>" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="<?php echo base_url("assets/jquery/dist/jquery.min.js")?>"></script>
@@ -329,7 +333,7 @@
     <script src="<?php echo base_url("assets/jszip/dist/jszip.min.js")?>"></script>
     <script src="<?php echo base_url("assets/pdfmake/build/pdfmake.min.js")?>"></script>
     <script src="<?php echo base_url("assets/pdfmake/build/vfs_fonts.js")?>"></script>
-    <script src="<?php echo base_url("assets/validator/validator.js")?>"></script>
+    <!-- <script src="<?php echo base_url("assets/validator/validator.js")?>"></script> -->
     <!-- material -->
     <script src="<?php echo base_url("assets/bootstrap-material/js/material.js")?>"></script>
     <script src="<?php echo base_url("assets/bootstrap-material/js/ripples.min.js")?>"></script>

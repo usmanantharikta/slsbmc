@@ -59,7 +59,7 @@
         <th>Date Input</th>
         <th>Price</th>
         <th>Supplier Detail </th>
-        <th>Publisher Detail</th>
+        <th>Rack Default</th>
         <th>Book Status</th>
         <th>Action</th>
       </tr>
@@ -158,10 +158,10 @@
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_publisher">Detail Publisher <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rack">Rack Default <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_publisher" name="id_publisher" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="rack" name="rack" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
@@ -242,23 +242,23 @@
         <!-- form -->
         <form id="add-book" class="form-horizontal form-label-left" novalidate>
           <span class="section">Data of New Book</span>
-
+<!-- 
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_book">Book ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="number" id="id_book" name="id_book" required="required" class="form-control col-md-7 col-xs-12">
             </div>
-          </div>
+          </div> -->
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_rfid">RFID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="id_rfid" name="id_rfid" required="required"  class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
+              <input type="text" id="id_rfid" name="id_rfid"  class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
-            <!-- <div>
+            <div>
               <a href="javascript:void(0)" onclick="get_rfid()"class="btn btn-raised btn-primary">Reload Value</a>
-            </div> -->
+            </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="book_title">Book Title <span class="required">*</span>
@@ -317,10 +317,10 @@
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_publisher">Detail Publisher <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rack">Rack Default <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_publisher" name="id_publisher" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="rack" name="rack" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
@@ -335,7 +335,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" onclick="close_modal()">Close</button>
-        <button id="send" type="submit" onclick="update_book()" class="btn btn-success">Submit</button>
+        <button id="send" type="submit" onclick="add_new_book()" class="btn btn-success">Submit</button>
       </div>
     </div>
   </div>
@@ -385,7 +385,7 @@ function edit_book(id_book)
           $('[name="input_date"]').val(data.input_date);
           $('[name="price"]').val(data.price);
           $('[name="id_supplier"]').val(data.id_supplier);
-          $('[name="id_publisher"]').val(data.id_publisher);
+          $('[name="rack"]').val(data.rack);
           $('#edit-modal').modal('show');
           $('.modal-title').text('Edit Book with ID: '+ data.book_title); // Set title to Bootstrap modal title
 
@@ -400,10 +400,10 @@ function edit_book(id_book)
 //function add book_title
 function add_book()
 {
+  $('#add-book')[0].reset();
   stat=true;
   $('#add-modal').modal('show');
-  get_rfid();
-  $(".modal-title").text(rfid_tag);
+  //$(".modal-title").text(rfid_tag);
 }
 
 function close_modal()
@@ -433,11 +433,17 @@ function get_rfid()
       dataType: "JSON",
       success: function(data)
       {
-        console.log(data.rfid+data.helpya);
+        console.log("rfid :"+data.rfid+" help: "+data.helpya);
         var rfid_tag=data.rfid;
-        $(".modal-title").text(rfid_tag);
+        //$(".modal-title").text(rfid_tag);
         $('[name="id_rfid"]').val(rfid_tag);
-        $(".help-block").text(data.help);
+        $(".help-block").text(data.helpya);
+        if(data.rfid==0){
+        $('[name="id_rfid"]').parent().parent().addClass('has-error');
+        }
+        else{
+        $('[name="id_rfid"]').parent().parent().removeClass('has-error');
+        }
       },
       error: function (jqXHR, textStatus, errorThrown)
       {
@@ -446,7 +452,7 @@ function get_rfid()
       complete: function() {
         // schedule the next request *only* when the current one is complete:
         if(stat){
-        setTimeout(get_rfid, 1000);
+        //setTimeout(get_rfid, 1000);
         }
       }
     });
@@ -474,6 +480,44 @@ function update_book()
           if(data.status) //if success close modal and reload ajax table
           {
               $('#edit-modal').modal('hide');
+              reload_table();
+          }
+          else
+          {
+              for (var i = 0; i < data.inputerror.length; i++)
+              {
+                  $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                  $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+              }
+          }
+          $('#btnSave').text('save'); //change button text
+          $('#btnSave').attr('disabled',false); //set button enable
+
+
+      },
+      error: function (jqXHR, textStatus, errorThrown)
+      {
+          alert('Error adding / update data');
+          $('#btnSave').text('save'); //change button text
+          $('#btnSave').attr('disabled',false); //set button enable
+
+      }
+  });
+}//eof update book
+
+function add_new_book()
+{
+  $.ajax({
+      url : "<?php echo site_url('admin/add_book')?>",
+      type: "POST",
+      data: $('#add-book').serialize(),
+      dataType: "JSON",
+      success: function(data)
+      {
+
+          if(data.status) //if success close modal and reload ajax table
+          {
+              $('#add-modal').modal('hide');
               reload_table();
           }
           else

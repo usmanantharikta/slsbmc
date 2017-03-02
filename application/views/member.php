@@ -86,10 +86,10 @@
           <span class="section">Data of Member</span>
 
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_book">Book ID <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_id">User ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_book" name="id_book" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="user_id" name="user_id" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
@@ -100,73 +100,81 @@
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="book_title">Book Title <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">User Name <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="book_title" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="book_title" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+              <input type="text" id="first_name" name="username" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <!-- <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">User Name <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="username" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  name="username"  required="required" type="text">
+            </div>
+          </div> -->
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email<span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author<span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="author" name="author" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="first_name" name="first_name" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="publisher">Publisher <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="publisher" name="publisher" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="last_name" name="last_name"  required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="editor">Editor <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="editor" name="editor"  required="required" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="phone" name="phone" required="required" data-validate-minmax="10,10000" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="year">Year <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="year" name="year" required="required" data-validate-minmax="10,10000" class="form-control col-md-7 col-xs-12">
+              <textarea id="address" name="address" required="required"  class="form-control col-md-7 col-xs-12"></textarea>
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="input_date">Input Date<span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="group_"> Group<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="date" id="input_date" name="input_date" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+              <input id="group_" type="text" name="group_" class="optional form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"> Price<span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Gender <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="price" type="number" name="price" class="optional form-control col-md-7 col-xs-12">
+              <!-- <input type="number" id="gender" name="gender" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12"> -->
+
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_supplier">Supplier <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="birthday">Birthday <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_supplier" name="id_supplier" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="birthday" name="birthday" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_publisher">Detail Publisher <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="register_date">Register Date<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_publisher" name="id_publisher" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="description" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
+              <input id="register_date" required="required" name="register_date" class="form-control col-md-7 col-xs-12"></input>
             </div>
           </div>
           <!-- <div class="ln_solid"></div>
@@ -243,7 +251,7 @@ table_member=$('#member').DataTable( {
 });
 
 //function open modal edit
-function edit_member(id_book)
+function edit_member(user_id)
 {
   $('#form')[0].reset(); // reset form on modals
   $('.form-group').removeClass('bad'); // clear error class
@@ -251,25 +259,25 @@ function edit_member(id_book)
   $('.alert').removeClass('alert'); // clear error string
   //Ajax Load data from ajax
   $.ajax({
-      url : "<?php echo site_url('admin/edit_member')?>/" + id_book,
+      url : "<?php echo site_url('admin/edit_member')?>/" + user_id,
       type: "GET",
       dataType: "JSON",
       success: function(data)
       {
-          $('[name="id_book"]').val(data.id_book);
+          $('[name="user_id"]').val(data.user_id);
           $('[name="id_rfid"]').val(data.id_rfid);
-          $('[name="book_title"]').val(data.book_title);
-          $('[name="author"]').val(data.author);
-          $('[name="publisher"]').val(data.publisher);
-          $('[name="editor"]').val(data.editor);
-          $('[name="year"]').val(data.year);
-          $('[name="description"]').val(data.description);
-          $('[name="input_date"]').val(data.input_date);
-          $('[name="price"]').val(data.price);
-          $('[name="id_supplier"]').val(data.id_supplier);
-          $('[name="id_publisher"]').val(data.id_publisher);
+          $('[name="username"]').val(data.username);
+          $('[name="email"]').val(data.email);
+          $('[name="first_name"]').val(data.first_name);
+          $('[name="last_name"]').val(data.last_name);
+          $('[name="phone"]').val(data.phone);
+          $('[name="register_date"]').val(data.register_date);
+          $('[name="address"]').val(data.address);
+          $('[name="group_"]').val(data.group_);
+          $('[name="gender"]').val(data.gender);
+          $('[name="birthday"]').val(data.birthday);
           $('#edit-modal').modal('show');
-          $('.modal-title').text('Edit Book with ID: '+ data.book_title); // Set title to Bootstrap modal title
+          $('.modal-title').text('Edit Book with ID: '+ data.username); // Set title to Bootstrap modal title
 
       },
       error: function (jqXHR, textStatus, errorThrown)

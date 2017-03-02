@@ -24,6 +24,12 @@ class Admin extends CI_Controller
 
   } //end of function index
 
+  //new book
+  public function new_book()
+  {
+    $this->template->Load('admin_temp','new_book1');
+  }
+
   public  function testpage()
   {
     $this->template->load('admin_temp','testpage');
@@ -51,7 +57,7 @@ class Admin extends CI_Controller
         $key['input_date'],
         $key['price'],
         $key['id_supplier'],
-        $key['id_publisher'],
+        $key['rack'],
         $key['book_status'],
         '<a class="btn btn-sm btn-primary" title="Edit" onclick="edit_book('."'".$key['id_book']."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
         <a class="btn btn-sm btn-danger" title="Delete" onclick="delete_book('."'".$key['id_book']."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>',
@@ -81,7 +87,7 @@ class Admin extends CI_Controller
       'input_date'=>$this->input->post('input_date'),
       'price'=>$this->input->post('price'),
       'id_supplier'=>$this->input->post('id_supplier'),
-      'id_publisher'=>$this->input->post('id_publisher'),
+      'rack'=>$this->input->post('rack'),
       'book_status'=>1,
     );
     $insert = $this->admin_model->save_update_book(array('id_book' => $this->input->post('id_book')), $data);
@@ -94,6 +100,27 @@ class Admin extends CI_Controller
     $this->admin_model->delete_book_by_id($id);
     echo json_encode(array("status" => TRUE));
   } //eof
+
+  //add new book from web
+  public function add_book()
+  {
+    $data=array(
+      'id_rfid'=>$this->input->post('id_rfid'),
+      'book_title'=>$this->input->post('book_title'),
+      'author'=>$this->input->post('author'),
+      'publisher'=>$this->input->post('publisher'),
+      'editor'=>$this->input->post('editor'),
+      'year'=>$this->input->post('year'),
+      'description'=>$this->input->post('description'),
+      'input_date'=>$this->input->post('input_date'),
+      'price'=>$this->input->post('price'),
+      'id_supplier'=>$this->input->post('id_supplier'),
+      'rack'=>$this->input->post('rack'),
+      'book_status'=>1,
+    );
+    $insert=$this->admin_model->add_new_book($data);
+    echo json_encode(array('status'=>TRUE,'insert'=>$insert));
+  }//eof
 
   //show page member
   public function member()
@@ -193,6 +220,20 @@ class Admin extends CI_Controller
     }
     echo  json_encode(array('data'=>$data));
   } //eof
+
+  //get value from arduino
+  public function get_value_rfid($rfid)
+  {
+    $file = fopen("rfid.json", "w") or die("can't open file");
+    fwrite($file, '{"helpya" : "", "rfid": '.$rfid.'}');
+    fclose($file);
+  }
+  public function reset_json()
+  {
+    $file = fopen("rfid.json", "w") or die("can't open file");
+    fwrite($file, '{"helpya" : "Please Scan the RFID Tag and click reload value !!!", "rfid": "0"}');
+    fclose($file);
+  }
 
 
 }//end of class

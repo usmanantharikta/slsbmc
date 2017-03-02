@@ -17,6 +17,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 | 2. get data book by id fro edit from
 | 3. Update data book by id
 | 4. delete data book by id
+| 5. add new book
 | 5. Load all data member from table user_member
 |
 */
@@ -35,6 +36,7 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('book_master');
   //  $this->db->where('book_status','0');
+    $this->db->order_by('id_book','DESC');
     $query=$this->db->get();
     return $query->result_array();
   } //the end of function
@@ -61,6 +63,13 @@ class Admin_model extends CI_Model
   {
     $this->db->where('id_book',$id);
     $this->db->delete('book_master');
+  }
+
+  //add new book
+  public function add_new_book($data)
+  {
+    $this->db->insert('book_master',$data);
+    return $this->db->insert_id();
   }
 
   //get all data user/member
