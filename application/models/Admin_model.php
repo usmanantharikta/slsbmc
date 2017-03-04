@@ -72,6 +72,13 @@ class Admin_model extends CI_Model
     return $this->db->insert_id();
   }
 
+  //add new mwmbwer
+  public function save_new_member($data)
+  {
+    $this->db->insert('user_master',$data);
+    return $this->db->insert_id();
+  }
+
   //get all data user/member
   public function get_all_member()
   {
@@ -91,6 +98,15 @@ class Admin_model extends CI_Model
     return $query->result_array();
   }// eof
 
+  //get data register-tag
+  public function get_all_data_register_tag_model()
+  {
+    $this->db->select('*');
+    $this->db->from('rfid_tag');
+    $query=$this->db->get();
+    return $query->result_array();
+  }
+
   // get data member by id
   public function get_member_by_id($id)
   {
@@ -104,6 +120,7 @@ class Admin_model extends CI_Model
   //update member by id
   public function save_update_member($where, $data)
   {
+    //print_r($where);
     $this->db->update('user_master',$data, $where);
     return $this->db->affected_rows();
   } //eof
@@ -114,6 +131,13 @@ class Admin_model extends CI_Model
     $this->db->where('user_id',$id);
     $this->db->delete('user_master');
   } //eof
+
+  //function add locbation of book
+  public function insert_location($where, $data)
+  {
+    $this->db->update('book_master',$data,$where);
+    return $this->db->affected_rows();
+  }
 
 
 } //the end of the class

@@ -1,4 +1,12 @@
-
+<?php
+if(!empty($this->session->userdata("user"))){
+  $user=$this->session->userdata("user");
+  $level=$this->session->userdata("level");
+  $login=TRUE;
+} else {
+  $login=FALSE;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,6 +44,13 @@
     <link href="<?php echo base_url("assets/bootstrap-material/css/bootstrap-material-design.css")?>" rel="stylesheet">
     <link href="<?php echo base_url("assets/bootstrap-material/css/ripples.min.css")?>" rel="stylesheet">
 
+    <!-- bootstrap-progressbar -->
+    <link href="<?php echo base_url("assets/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css")?>" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="<?php echo base_url("assets/jqvmap/dist/jqvmap.min.css")?>" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="<?php echo base_url("assets/bootstrap-daterangepicker/daterangepicker.css")?>" rel="stylesheet">
+
     <!-- costom by developed -->
     <link href="<?php echo base_url("assets/custom-css/custom-dev.css")?>" rel="stylesheet">
 
@@ -45,6 +60,10 @@
 
   <body class="nav-md">
     <div class="container body">
+      <?php
+      if($login)
+      {
+      ?>
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -75,16 +94,16 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                      <li><a href="<?php echo site_url('admin/home')?>">Dashboard</a></li>
+                      <!-- <li><a href="index2.html">Dashboard2</a></li>
+                      <li><a href="index3.html">Dashboard3</a></li> -->
                     </ul>
                   </li>
                   <li><a><i class="fa fa-book"></i> Book <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo site_url('admin')?>">New Book</a></li>
-                      <!-- <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
+                      <li><a href="<?php echo site_url('admin/book_new')?>">New Book</a></li>
+                      <li><a href="<?php echo site_url('admin/book_location')?>">Book Location</a></li>
+                      <!-- <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>
                       <li><a href="form_upload.html">Form Upload</a></li>
                       <li><a href="form_buttons.html">Form Buttons</a></li> -->
@@ -105,7 +124,7 @@
                   </li>
                   <li><a><i class="fa fa-id-card"></i> Card <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Registered Card</a></li>
+                      <li><a href="<?php echo site_url('admin/register_tag')?>">Registered Card</a></li>
                       <!-- <li><a href="tables_dynamic.html">Table Dynamic</a></li> -->
                     </ul>
                   </li>
@@ -183,7 +202,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo site_url('access/logout')?>">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -214,7 +233,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="<?php echo site_url('access/logout')?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -305,6 +324,25 @@
         </footer>
         <!-- /footer content -->
       </div>
+      <?php }
+      if(!$login){
+      ?>
+      <div class="login_wrapper" style="max-width:800px">
+
+      <div class="alert alert-dismissible alert-warning">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4>Warning!</h4>
+
+      <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna,
+        <a href="javascript:void(0)" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+        <meta http-equiv="refresh" content="3;url=http://localhost/sls/admin"/>
+    </div>
+  </div>
+
+    <?php
+      }
+      ?>
+
     </div>
 
 
@@ -337,8 +375,45 @@
     <!-- material -->
     <script src="<?php echo base_url("assets/bootstrap-material/js/material.js")?>"></script>
     <script src="<?php echo base_url("assets/bootstrap-material/js/ripples.min.js")?>"></script>
+
+    <script src="<?php echo base_url("assets/Chart.js/dist/Chart.min.js")?>"></script>
+    <!-- gauge.js -->
+    <script src="<?php echo base_url("assets/gauge.js/dist/gauge.min.js")?>"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="<?php echo base_url("assets/bootstrap-progressbar/bootstrap-progressbar.min.js")?>"></script>
+    <!-- iCheck -->
+    <script src="<?php echo base_url("assets/iCheck/icheck.min.js")?>"></script>
+    <!-- Skycons -->
+    <script src="<?php echo base_url("assets/skycons/skycons.js")?>"></script>
+    <!-- Flot -->
+    <script src="<?php echo base_url("assets/Flot/jquery.flot.js")?>"></script>
+    <script src="<?php echo base_url("assets/Flot/jquery.flot.pie.js")?>"></script>
+    <script src="<?php echo base_url("assets/Flot/jquery.flot.time.js")?>"></script>
+    <script src="<?php echo base_url("assets/Flot/jquery.flot.stack.js")?>"></script>
+    <script src="<?php echo base_url("assets/Flot/jquery.flot.resize.js")?>"></script>
+    <!-- Flot plugins -->
+    <script src="<?php echo base_url("assets/flot.orderbars/js/jquery.flot.orderBars.js")?>"></script>
+    <script src="<?php echo base_url("assets/flot-spline/js/jquery.flot.spline.min.js")?>"></script>
+    <script src="<?php echo base_url("assets/flot.curvedlines/curvedLines.js")?>"></script>
+    <!-- DateJS -->
+    <script src="<?php echo base_url("assets/DateJS/build/date.js")?>"></script>
+    <!-- JQVMap -->
+    <script src="<?php echo base_url("assets/jqvmap/dist/jquery.vmap.js")?>"></script>
+    <script src="<?php echo base_url("assets/jqvmap/dist/maps/jquery.vmap.world.js")?>"></script>
+    <script src="<?php echo base_url("assets/jqvmap/examples/js/jquery.vmap.sampledata.js")?>"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="<?php echo base_url("assets/moment/min/moment.min.js")?>"></script>
+    <script src="<?php echo base_url("assets/bootstrap-daterangepicker/daterangepicker.js")?>"></script>
+
     <script>
       $.material.init();
+    </script>
+    <script>
+    var login = '<?php echo $login ?>';
+    var user= '<?php echo $user ?>';
+    var level= '<?php echo $level ?>';
+    console.log(login);
+    console.log("user : "+user+" - level: "+level);
     </script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url("assets/build/js/custom.min.js")?>"></script>

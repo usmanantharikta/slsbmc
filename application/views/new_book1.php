@@ -60,6 +60,7 @@
         <th>Price</th>
         <th>Supplier Detail </th>
         <th>Rack Default</th>
+        <th>Book Location </th>
         <th>Book Status</th>
         <th>Action</th>
       </tr>
@@ -70,147 +71,6 @@
 </div>
 </div>
 </div>
-
-<!-- modal for edit some data -->
-<div class="modal" id="edit-modal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <!-- form -->
-        <form id="form" class="form-horizontal form-label-left" novalidate>
-
-          <!-- <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
-          </p> -->
-          <span class="section">Data of New Book</span>
-
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_book">Book ID <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_book" name="id_book" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_rfid">RFID <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_rfid" name="id_rfid" required="required"  class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="book_title">Book Title <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="book_title" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="book_title" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author<span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="author" name="author" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="publisher">Publisher <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="publisher" name="publisher" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="editor">Editor <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="editor" name="editor"  required="required" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="year">Year <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="year" name="year" required="required" data-validate-minmax="10,10000" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="input_date">Input Date<span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="date" id="input_date" name="input_date" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"> Price<span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="price" type="number" name="price" class="optional form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_supplier">Supplier <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_supplier" name="id_supplier" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rack">Rack Default <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="rack" name="rack" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-            </div>
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="description" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
-            </div>
-          </div>
-          <!-- <div class="ln_solid"></div>
-          <div class="form-group">
-            <div class="col-md-6 col-md-offset-3">
-              <button type="submit" class="btn btn-primary">Cancel</button>
-              <button id="send" type="submit" class="btn btn-success">Submit</button>
-            </div>
-          </div> -->
-        </form>
-        <!-- end form -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="send" type="submit" onclick="update_book()" class="btn btn-success">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- /modal for edit some data -->
-
-<!-- <div class="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="alert alert-dismissible alert-warning">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h4>Warning!</h4>
-      <p>Are You sure want to delete this data ? </p>
-      <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-      <button id="send" type="submit" onclick="ajax_delete_book()" class="btn btn-danger">Yes</button>
-    </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-raised btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- modal for edit some data -->
 <div class="modal" id="delete-modal">
@@ -242,92 +102,102 @@
         <!-- form -->
         <form id="add-book" class="form-horizontal form-label-left" novalidate>
           <span class="section">Data of New Book</span>
-<!-- 
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_book">Book ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="number" id="id_book" name="id_book" required="required" class="form-control col-md-7 col-xs-12">
             </div>
-          </div> -->
+          </div>
+          <div class="item form-group">
+            <label class="col-md-3 col-sm-3 col-xs-12" for="first_name">
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="togglebutton">
+                <label>
+                  <input type="checkbox" id="status_rfid" > Using RFID
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_rfid">RFID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" id="id_rfid" name="id_rfid"  class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
-            <div>
+            <!-- <div>
               <a href="javascript:void(0)" onclick="get_rfid()"class="btn btn-raised btn-primary">Reload Value</a>
-            </div>
+            </div> -->
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="book_title">Book Title <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="book_title" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="book_title" placeholder="both name(s) e.g Jon Doe" required="required" type="text">
+              <input id="book_title" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="book_title" placeholder="both name(s) e.g Jon Doe" required="required" type="text"> <span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="author" name="author" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="author" name="author" required="required" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="publisher">Publisher <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="publisher" name="publisher" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="publisher" name="publisher" required="required" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="editor">Editor <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="editor" name="editor"  required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="editor" name="editor"  required="required" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="year">Year <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="year" name="year" required="required" data-validate-minmax="10,10000" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="year" name="year" required="required" data-validate-minmax="10,10000" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="input_date">Input Date<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="date" id="input_date" name="input_date" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+              <input type="date" id="input_date" name="input_date" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="price"> Price<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="price" type="number" name="price" class="optional form-control col-md-7 col-xs-12">
+              <input id="price" type="number" name="price" class="optional form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_supplier">Supplier <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="number" id="id_supplier" name="id_supplier" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="id_supplier" name="id_supplier" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rack">Rack Default <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="rack" name="rack" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+              <input type="text" id="rack" name="rack" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12"><span class="help-block"></span>
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="description" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
+              <textarea id="description" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea><span class="help-block"></span>
             </div>
           </div>
         </form>
@@ -335,7 +205,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" onclick="close_modal()">Close</button>
-        <button id="send" type="submit" onclick="add_new_book()" class="btn btn-success">Submit</button>
+        <button id="send" type="submit" onclick="save()" class="btn btn-success">Submit</button>
       </div>
     </div>
   </div>
@@ -347,8 +217,14 @@ var url="<?php echo site_url("admin/get_new_book_data/")?>";  //url to get data 
 var table;
 var id_book_glob=0;
 var stat=true;
+var book_method;
 //plot data to table using ajax
 $(document).ready(function() {
+  $("#status_rfid").change(function(){
+    get_rfid();
+  });
+
+
 table=$('#new_book').DataTable( {
     "ajax":
     {
@@ -363,7 +239,8 @@ table=$('#new_book').DataTable( {
 //function open modal edit
 function edit_book(id_book)
 {
-  $('#form')[0].reset(); // reset form on modals
+  book_method="edit";
+  $('#add-book')[0].reset(); // reset form on modals
   $('.form-group').removeClass('bad'); // clear error class
   $('.alert').empty();
   $('.alert').removeClass('alert'); // clear error string
@@ -386,7 +263,7 @@ function edit_book(id_book)
           $('[name="price"]').val(data.price);
           $('[name="id_supplier"]').val(data.id_supplier);
           $('[name="rack"]').val(data.rack);
-          $('#edit-modal').modal('show');
+          $('#add-modal').modal('show');
           $('.modal-title').text('Edit Book with ID: '+ data.book_title); // Set title to Bootstrap modal title
 
       },
@@ -404,6 +281,7 @@ function add_book()
   stat=true;
   $('#add-modal').modal('show');
   //$(".modal-title").text(rfid_tag);
+  book_method="add";
 }
 
 function close_modal()
@@ -451,8 +329,8 @@ function get_rfid()
       },
       complete: function() {
         // schedule the next request *only* when the current one is complete:
-        if(stat){
-        //setTimeout(get_rfid, 1000);
+        if($("#status_rfid").prop("checked") == true){
+        setTimeout(get_rfid, 1000);
         }
       }
     });
@@ -463,52 +341,22 @@ function reload_table()
     table.ajax.reload(null,false); //reload datatable ajax
 }
 
-function update_book()
+//add new book
+function save()
 {
-  $('.form-group').removeClass('bad'); // clear error class
-  $('.alert').empty();
-  $('.alert').removeClass('alert'); // clear error string
+  if(book_method=='add')
+  {
+    url="<?php echo site_url('admin/add_book')?>";
+  }
+  else {
+    url="<?php echo site_url('admin/update_book')?>";
+  }
+  $('.form-group').removeClass('has-error'); // clear error class
+  $('.help-block').empty();
+  $('.help-block').removeClass('has-error'); // clear error string
 
   $.ajax({
-      url : "<?php echo site_url('admin/update_book')?>",
-      type: "POST",
-      data: $('#form').serialize(),
-      dataType: "JSON",
-      success: function(data)
-      {
-
-          if(data.status) //if success close modal and reload ajax table
-          {
-              $('#edit-modal').modal('hide');
-              reload_table();
-          }
-          else
-          {
-              for (var i = 0; i < data.inputerror.length; i++)
-              {
-                  $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-                  $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
-              }
-          }
-          $('#btnSave').text('save'); //change button text
-          $('#btnSave').attr('disabled',false); //set button enable
-
-
-      },
-      error: function (jqXHR, textStatus, errorThrown)
-      {
-          alert('Error adding / update data');
-          $('#btnSave').text('save'); //change button text
-          $('#btnSave').attr('disabled',false); //set button enable
-
-      }
-  });
-}//eof update book
-
-function add_new_book()
-{
-  $.ajax({
-      url : "<?php echo site_url('admin/add_book')?>",
+      url : url,
       type: "POST",
       data: $('#add-book').serialize(),
       dataType: "JSON",
@@ -522,10 +370,10 @@ function add_new_book()
           }
           else
           {
-              for (var i = 0; i < data.inputerror.length; i++)
+              for (var i = 0; i < data.input_error.length; i++)
               {
-                  $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-                  $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                  $('[name="'+data.input_error[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                  $('[name="'+data.input_error[i]+'"]').next().text(data.warning_error[i]); //select span help-block class set text error string
               }
           }
           $('#btnSave').text('save'); //change button text
@@ -541,7 +389,7 @@ function add_new_book()
 
       }
   });
-}//eof update book
+}//eof add book
 
 function delete_book(id_book)
 {
