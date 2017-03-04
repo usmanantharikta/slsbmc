@@ -1,0 +1,178 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
+--
+-- Host: localhost    Database: db_ta
+-- ------------------------------------------------------
+-- Server version	5.7.17-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin_master`
+--
+
+DROP TABLE IF EXISTS `admin_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin_master` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rfid` bigint(100) DEFAULT NULL,
+  `username` varchar(256) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
+  `level` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id_admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_master`
+--
+
+LOCK TABLES `admin_master` WRITE;
+/*!40000 ALTER TABLE `admin_master` DISABLE KEYS */;
+INSERT INTO `admin_master` VALUES (1,1,'usman','c297b40a07794397d5fc1009e2897632704bcfd7a720748727fb5e96467dcd53','super');
+/*!40000 ALTER TABLE `admin_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_master`
+--
+
+DROP TABLE IF EXISTS `book_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book_master` (
+  `id_book` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rfid` bigint(255) DEFAULT NULL,
+  `book_title` varchar(256) DEFAULT NULL,
+  `author` varchar(256) DEFAULT NULL,
+  `editor` varchar(32) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `description` text,
+  `input_date` date DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `image` varchar(256) DEFAULT NULL,
+  `id_supplier` int(11) DEFAULT NULL,
+  `rack` varchar(256) DEFAULT NULL,
+  `publisher` varchar(220) DEFAULT NULL,
+  `book_status` varchar(256) DEFAULT NULL,
+  `book_location` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id_book`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_master`
+--
+
+LOCK TABLES `book_master` WRITE;
+/*!40000 ALTER TABLE `book_master` DISABLE KEYS */;
+INSERT INTO `book_master` VALUES (10,64215159689489,'Hadiah Pernikahan Terindah','Ibnu Watiniyah $ Ummu Ali','Bunda Ina',2015,'Buku Tentang Meraih Pernikahn yang Indah','2017-02-17',100000,NULL,0,'0','Kaysa Media','1',NULL),(11,16024519412823,'Alles Liebe bertahan dn berjuang untuk mu','Farrahnanda','Avifah Ve',2013,'Novel romance','2017-02-20',50000,NULL,NULL,NULL,'de Teens','0',NULL),(19,16024519412234,'English Grammar plus Idioms for general application','Febryo DW','unname',2014,'','2017-02-20',0,NULL,0,'0','dap publisher','1',NULL),(20,23515159124235,'Menuai Hasil dalam Rei Ki','Irmansyah Effendi','unname',2009,'','2017-02-20',0,NULL,0,'0','PT Gramedia Pustaka Utama ','1',NULL),(30,64215159124,'new title of love','usman','',0,'','2017-02-28',0,NULL,NULL,NULL,'','0',NULL),(33,5656546,'test','','',0,'','0000-00-00',0,NULL,0,'','','1',NULL),(34,324,'3422','243','23',1333,'','2017-03-17',2123,NULL,0,'wer','2342','1',NULL),(35,12345678,'iiiiiiiiiiiiiiiiiii','asdb','sdfgh',12345,'','2017-03-18',23,NULL,0,NULL,'sdfghj','1',NULL),(36,12331,'testqwertyui;','a','a',111,'1','2017-03-16',1,NULL,1,'rack-100','a','1','rack-100'),(37,2345678,'asdfghj','qwertyuk','rethjkj',1234567,'wertyu','2017-03-10',32424,NULL,342,'rack1','wertyu','1',NULL);
+/*!40000 ALTER TABLE `book_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `log_visitor`
+--
+
+DROP TABLE IF EXISTS `log_visitor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `log_visitor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(100) DEFAULT NULL,
+  `rfid` bigint(100) DEFAULT NULL,
+  `log_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `log_visitor`
+--
+
+LOCK TABLES `log_visitor` WRITE;
+/*!40000 ALTER TABLE `log_visitor` DISABLE KEYS */;
+INSERT INTO `log_visitor` VALUES (1,2,16024519412823,'2017-02-22 00:00:00'),(2,2,16024519412823,'2017-02-22 00:00:00'),(3,2,16024519412823,'2017-02-22 00:00:00'),(4,2,16024519412823,'2017-02-22 16:37:45'),(5,2,16024519412823,'2017-02-22 16:38:01'),(6,4,64215159124116,'2017-02-22 16:38:04'),(7,4,64215159124116,'2017-02-22 16:38:05'),(8,4,64215159124116,'2017-02-23 14:39:33'),(9,4,64215159124116,'2017-02-23 14:39:37'),(10,2,16024519412823,'2017-02-23 14:39:41'),(11,4,64215159124116,'2017-02-23 14:39:50'),(12,4,64215159124116,'2017-02-23 14:39:52'),(13,2,16024519412823,'2017-02-23 14:39:55'),(14,2,16024519412823,'2017-02-23 14:39:56'),(15,2,16024519412823,'2017-02-23 14:40:00'),(16,4,64215159124116,'2017-02-23 14:40:01'),(17,4,64215159124116,'2017-02-23 14:44:00'),(18,2,16024519412823,'2017-02-23 14:44:02'),(19,4,64215159124116,'2017-02-23 14:44:39'),(20,4,64215159124116,'2017-02-23 14:44:42'),(21,4,64215159124116,'2017-02-23 14:44:44'),(22,4,64215159124116,'2017-02-23 14:44:45'),(23,4,64215159124116,'2017-02-23 14:44:48'),(24,2,16024519412823,'2017-02-23 14:44:50'),(25,4,64215159124116,'2017-02-23 14:45:56'),(26,4,64215159124116,'2017-02-23 14:45:58'),(27,4,64215159124116,'2017-02-23 14:46:00'),(28,4,64215159124116,'2017-02-23 14:46:03'),(29,2,16024519412823,'2017-02-23 14:46:04'),(30,2,16024519412823,'2017-02-23 14:46:06'),(31,2,16024519412823,'2017-02-23 14:46:07'),(32,4,64215159124116,'2017-02-23 14:46:12'),(33,4,64215159124116,'2017-02-23 14:46:40'),(34,4,64215159124116,'2017-02-23 14:46:41'),(35,4,64215159124116,'2017-02-23 14:46:43'),(36,4,64215159124116,'2017-02-23 14:46:44'),(37,4,64215159124116,'2017-02-23 14:46:55'),(38,4,64215159124116,'2017-02-23 14:46:58'),(39,2,16024519412823,'2017-02-23 14:47:04'),(40,2,16024519412823,'2017-02-23 14:47:05'),(41,4,64215159124116,'2017-02-23 14:47:38'),(42,4,64215159124116,'2017-02-23 14:47:38'),(43,4,64215159124116,'2017-02-23 14:47:39'),(44,2,16024519412823,'2017-02-23 14:47:42'),(45,2,16024519412823,'2017-02-23 14:48:03'),(46,4,64215159124116,'2017-02-23 14:48:19'),(47,4,64215159124116,'2017-02-23 14:48:19'),(48,4,64215159124116,'2017-02-23 14:48:19'),(49,4,64215159124116,'2017-02-23 14:48:22'),(50,4,64215159124116,'2017-02-23 14:48:22'),(51,4,64215159124116,'2017-02-23 14:48:25'),(52,4,64215159124116,'2017-02-23 14:48:25'),(53,4,64215159124116,'2017-02-23 14:48:26'),(54,4,64215159124116,'2017-02-23 14:48:55'),(55,4,64215159124116,'2017-02-23 14:48:58'),(56,2,16024519412823,'2017-02-23 14:49:00'),(57,4,64215159124116,'2017-02-23 14:49:04'),(58,4,64215159124116,'2017-02-23 14:49:04'),(59,4,64215159124116,'2017-02-23 14:49:05'),(60,4,64215159124116,'2017-02-23 14:49:06'),(61,4,64215159124116,'2017-02-23 14:49:09'),(62,2,16024519412823,'2017-02-23 14:49:13'),(63,4,64215159124116,'2017-02-23 14:49:57'),(64,4,64215159124116,'2017-02-23 14:49:59'),(65,4,64215159124116,'2017-02-23 14:50:01'),(66,2,16024519412823,'2017-02-23 14:50:02'),(67,2,16024519412823,'2017-02-23 14:50:03'),(68,2,16024519412823,'2017-02-23 14:50:03'),(69,4,64215159124116,'2017-02-23 14:50:06'),(70,2,16024519412823,'2017-02-23 14:50:11'),(71,4,64215159124116,'2017-02-23 14:50:14'),(72,4,64215159124116,'2017-02-23 14:50:21'),(73,4,64215159124116,'2017-02-23 14:50:23'),(74,4,64215159124116,'2017-02-23 14:50:24'),(75,2,16024519412823,'2017-02-23 14:50:24'),(76,2,16024519412823,'2017-02-23 14:50:25'),(77,2,16024519412823,'2017-02-23 14:50:25'),(78,8,16024519412823,'2017-02-23 14:51:53'),(79,4,64215159124116,'2017-02-23 14:51:56'),(80,8,16024519412823,'2017-02-23 14:51:59'),(81,4,64215159124116,'2017-02-23 14:52:02'),(82,4,64215159124116,'2017-02-23 14:52:05'),(83,4,64215159124116,'2017-02-23 14:52:08'),(84,8,16024519412823,'2017-02-23 14:52:10'),(85,8,16024519412823,'2017-02-23 14:52:10'),(86,8,16024519412823,'2017-02-23 14:52:11'),(87,8,16024519412823,'2017-02-23 14:52:27'),(88,4,64215159124116,'2017-02-23 14:52:29'),(89,8,16024519412823,'2017-02-23 14:52:33'),(90,4,64215159124116,'2017-02-23 14:52:38');
+/*!40000 ALTER TABLE `log_visitor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rfid_tag`
+--
+
+DROP TABLE IF EXISTS `rfid_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rfid_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rfid_id` bigint(100) DEFAULT NULL,
+  `reg_time` datetime DEFAULT NULL,
+  `use_for` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rfid_tag`
+--
+
+LOCK TABLES `rfid_tag` WRITE;
+/*!40000 ALTER TABLE `rfid_tag` DISABLE KEYS */;
+INSERT INTO `rfid_tag` VALUES (5,64215159124116,'2017-02-23 14:34:03','book'),(6,16024519412823,'2017-02-23 14:37:07','member');
+/*!40000 ALTER TABLE `rfid_tag` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_master`
+--
+
+DROP TABLE IF EXISTS `user_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_master` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rfid` bigint(100) DEFAULT NULL,
+  `username` varchar(256) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
+  `first_name` varchar(256) DEFAULT NULL,
+  `last_name` varchar(256) DEFAULT NULL,
+  `phone` varchar(32) DEFAULT NULL,
+  `address` varchar(256) DEFAULT NULL,
+  `group_` varchar(64) DEFAULT NULL,
+  `gender` set('male','female') DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `register_date` date DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_master`
+--
+
+LOCK TABLES `user_master` WRITE;
+/*!40000 ALTER TABLE `user_master` DISABLE KEYS */;
+INSERT INTO `user_master` VALUES (4,64215159124116,'rakauuu','test@test.com',NULL,'Muhammad','Raka Santoso','','','',NULL,'0000-00-00','2017-02-17'),(8,16024519412823,'usman','usman@student.surya.ac.id','510da368ef8efb9727598e8ade1043256504ebb6b1e38327d6ec1b65','usman','','087889647958',NULL,NULL,'male','1994-09-30','2017-02-17'),(9,123456,'aaa','aaaa@aaam.com',NULL,'aaa','aaa','2345','aaaaaaaa','aaa',NULL,'0000-00-00','0000-00-00');
+/*!40000 ALTER TABLE `user_master` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-03-04 23:22:05
