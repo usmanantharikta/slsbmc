@@ -1,3 +1,13 @@
+<!-- <?php
+if(!empty($this->session->userdata("rfid_reader"))){
+  $user=$this->session->userdata("rfid_reader");
+  echo $user;
+  $login=TRUE;
+} else {
+  $login=FALSE;
+  echo "rfid tdak ada";
+}
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">

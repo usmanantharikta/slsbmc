@@ -83,4 +83,10 @@ table=$('#book-location').DataTable( {
     },
   });
 });
+
+function reload_table()
+{
+    table.ajax.reload(null,false); //reload datatable ajax
+}
+
 </script>

@@ -36,7 +36,7 @@ class Admin_model extends CI_Model
     $this->db->select('*');
     $this->db->from('book_master');
   //  $this->db->where('book_status','0');
-    $this->db->order_by('id_book','DESC');
+    $this->db->order_by('book_id','DESC');
     $query=$this->db->get();
     return $query->result_array();
   } //the end of function
@@ -46,7 +46,7 @@ class Admin_model extends CI_Model
   {
     $this->db->select('*');
     $this->db->from('book_master');
-    $this->db->where('id_book',$id);
+    $this->db->where('book_id',$id);
     $query=$this->db->get();
     return $query->row();
   }
@@ -139,5 +139,59 @@ class Admin_model extends CI_Model
     return $this->db->affected_rows();
   }
 
+  //for home admin_model___________________________________________________________________________________________
+  // get rfid number
+  public function get_num_rfid()
+  {
+
+  }
+
+  //get number book
+  public function get_num_book()
+  {
+
+  }
+
+  //get number member
+  public function get_num_member()
+  {
+
+  }
+
+  //get number book borrow
+  public function get_num_book_borrow()
+  {
+
+  }
+
+  //get  number book borrow grup by date
+  public function get_num_book_borrow_group_by_date()
+  {
+
+  }
+
+  //get book on member
+  public function get_num_book_on_member()
+  {
+
+  }
+
+  //get book was return by member
+  public function get_num_book_was_return()
+  {
+
+  }
+
+  //get num visitor
+  public function get_num_visitor()
+  {
+
+  }
+
+  //get number visitor group by date
+  public function get_num_visitor_by_date()
+  {
+
+  }
 
 } //the end of the class

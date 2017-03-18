@@ -32,7 +32,16 @@ class Admin extends CI_Controller
   //homepage
   public function home()
   {
-    $this->template->load('admin_temp','admin_homepage');
+    $data['num_rfid']=$this->admin_model->get_num_rfid();
+    $data['num_book']=$this->admin_model->get_num_book();
+    $data['num_member']=$this->admin_model->get_num_member();
+    $data['num_book_borrow']=$this->admin_model->get_num_book_borrow();
+    $data['num_book_borrow_group_by_date']=$this->admin_model->get_num_book_borrow_group_by_date();
+    $data['num_book_on_member']=$this->admin_model->get_num_book_on_member();
+    $data['num_book_was_return']=$this->admin_model->get_num_book_was_return();
+    $data['num_visitor']=$this->admin_model->get_num_visitor();
+    $data['num_visitor_by_date']=$this->admin_model->get_num_visitor_by_date(); // get number visitor on one day
+    $this->template->load('admin_temp','admin_homepage',$data);
   }
 
   //new book
@@ -57,7 +66,7 @@ class Admin extends CI_Controller
     {
       array_push($data, array(
         $no++,
-        $key['id_book'],
+        $key['book_id'],
         $key['id_rfid'],
         $key['book_title'],
         $key['author'],
@@ -71,8 +80,8 @@ class Admin extends CI_Controller
         $key['rack'],
         $key['book_location'],
         $key['book_status'],
-        '<a class="btn btn-sm btn-primary" title="Edit" onclick="edit_book('."'".$key['id_book']."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-        <a class="btn btn-sm btn-danger" title="Delete" onclick="delete_book('."'".$key['id_book']."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>',
+        '<a class="btn btn-sm btn-primary" title="Edit" onclick="edit_book('."'".$key['book_id']."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+        <a class="btn btn-sm btn-danger" title="Delete" onclick="delete_book('."'".$key['book_id']."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>',
       ));
     }
     echo json_encode(array('data'=>$data));
@@ -98,10 +107,10 @@ class Admin extends CI_Controller
       else
       {
         $info_book='<i class="text-danger fa fa-close">Wrong</i>';
-      }
+      }  // get rfid number
       array_push($data, array(
         $no++,
-        $key['id_book'],
+        $key['book_id'],
         $key['id_rfid'],
         $key['book_title'],
         $key['author'],
@@ -164,7 +173,7 @@ class Admin extends CI_Controller
       'rack'=>$this->input->post('rack'),
       'book_status'=>1,
     );
-    $insert = $this->admin_model->save_update_book(array('id_book' => $this->input->post('id_book')), $data);
+    $insert = $this->admin_model->save_update_book(array('book_id' => $this->input->post('id_book')), $data);
     echo json_encode(array("status" => TRUE));
   }//eof update book
 
@@ -414,15 +423,31 @@ class Admin extends CI_Controller
   {
     $data=explode("_",$rfid);
     print_r($data);
+    $wemos=0;
+    $rack=0;
     if(!empty($data[1]))
     {
-      echo $data[1];
+      //echo $data[1];
+      $rack=$data[1];
       $insert=$this->admin_model->insert_location(array("id_rfid"=>$data[0]),array('book_location'=>$data[1]));
       echo $insert;
     }
     else {
       echo "es nulll";
     }
+    if(!empty($data[2]))
+    {
+      //echo $data[1];
+     // $insert=$this->admin_model->insert_location(array("id_rfid"=>$data[0]),array('book_location'=>$data[1]));
+      //echo $insert;
+      $wemos=$data[2];
+
+    }
+    else {
+      echo "es nulll";
+    }
+
+    $this->session->set_userdata('rfid_reader',$rfid);
 
     $file = fopen("rfid.json", "w") or die("can't open file");
     fwrite($file, '{"helpya" : "", "rfid": '.$data[0].'}');
@@ -433,6 +458,13 @@ class Admin extends CI_Controller
     $file = fopen("rfid.json", "w") or die("can't open file");
     fwrite($file, '{"helpya" : "Please Scan the RFID Tag and click reload value !!!", "rfid": "0"}');
     fclose($file);
+  }
+
+  // homepage admin
+  public function get_num_rfid()
+  {
+    $number_rfid[]=$this->admin_model->get_num_rfid_m();
+
   }
 
 

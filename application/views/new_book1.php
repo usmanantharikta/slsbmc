@@ -251,7 +251,7 @@ function edit_book(id_book)
       dataType: "JSON",
       success: function(data)
       {
-          $('[name="id_book"]').val(data.id_book);
+          $('[name="id_book"]').val(data.book_id);
           $('[name="id_rfid"]').val(data.id_rfid);
           $('[name="book_title"]').val(data.book_title);
           $('[name="author"]').val(data.author);
